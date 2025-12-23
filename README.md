@@ -8,7 +8,7 @@ This project implements a comprehensive DevOps pipeline for a Node.js web applic
 
 # Pipeline in Action
 
-![alt text](pipeline-working.png)
+![alt text](FinalPipeLineWorking.png)
 
 # Technology Stack
 
