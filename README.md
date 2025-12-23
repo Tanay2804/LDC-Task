@@ -6,6 +6,10 @@ This project implements a comprehensive DevOps pipeline for a Node.js web applic
 
 ![alt text](Architecture.png)
 
+# Pipeline in Action
+
+![alt text](pipeline-working.png)
+
 # Technology Stack
 
 * Version Control: GitHub
