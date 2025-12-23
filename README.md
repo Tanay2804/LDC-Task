@@ -10,6 +10,10 @@ This project implements a comprehensive DevOps pipeline for a Node.js web applic
 
 ![alt text](FinalPipeLineWorking.png)
 
+# Dec 23 Dockerhub Error
+
+Pushed images are currently not visible on Dockerhub due to an ongoing issue with Dockerhub's image visibility. However, the images are successfully pushed and can be pulled using the appropriate commands.
+
 # Technology Stack
 
 * Version Control: GitHub
