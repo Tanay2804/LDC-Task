@@ -1,24 +1,30 @@
-# Stage 1: Build
-FROM node:20-alpine AS builder
+# Stage 1: Build stage
+FROM node:18-alpine AS builder
+
 WORKDIR /app
+
+# Copy package files
 COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
 
+# Install dependencies
+RUN npm ci --only=production
 
-# Stage 2: The runner stage
-FROM node:20-alpine AS runner
-ENV PORT=3000
+# Stage 2: Production stage
+FROM node:18-alpine
 
-# Set the working directory
 WORKDIR /app
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/*.xml ./
-COPY --from=builder /app/*.txt ./
 
+# Copy dependencies from builder
+COPY --from=builder /app/node_modules ./node_modules
+
+# Copy application files
+COPY . .
+
+# Expose port
 EXPOSE 3000
-CMD ["npm", "start"]
+
+# Run as non-root user
+USER node
+
+# Start application
+CMD ["node", "server.js"]

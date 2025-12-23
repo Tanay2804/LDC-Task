@@ -1,7 +1,7 @@
 services:
   web:
     build:
-      context: .
+      context: ./web
       dockerfile: Dockerfile
     container_name: jenkins-nextjs-app
     ports:

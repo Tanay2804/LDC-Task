@@ -124,3 +124,5 @@ override.tf.json
 terraform.rc
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,nextjs,terraform,dotenv,git
+.terraform.lock.hcl
+.terraform
