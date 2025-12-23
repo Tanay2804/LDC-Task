@@ -23,8 +23,8 @@ pipeline{
          stage("Sonarqube Analysis "){
              steps{
                  withSonarQubeEnv('SonarQube-Server') {
-                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Swiggy-CI \
-                     -Dsonar.projectKey=Swiggy-CI '''
+                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=CICD \
+                     -Dsonar.projectKey=CICD '''
                  }
              }
          }
