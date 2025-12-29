@@ -10,9 +10,28 @@ This project implements a comprehensive DevOps pipeline for a Node.js web applic
 
 ![alt text](FinalPipeLineWorking.png)
 
-# Dec 23 Dockerhub Error
+Deployed Application:
+![alt text](deployed-before.png)
 
-Pushed images are currently not visible on Dockerhub due to an ongoing issue with Dockerhub's image visibility. However, the images are successfully pushed and can be pulled using the appropriate commands.
+# Dockerhub Deployed Image
+
+Deployed image link:
+[https://hub.docker.com/repository/docker/tanaytibrewal/cicd/general]
+![alt text](dockerhub.png)
+
+# Before and After Redeployment
+
+Before Redeployment Pipeline:
+![alt text](pipeline-before.png)
+
+Running application before redeployment:
+![alt text](deployed-before.png)
+
+---
+After Redeployment Pipeline:
+![alt text](pipeline-after.png)
+Running application after redeployment:
+![alt text](deployed-after.png)
 
 # Technology Stack
 

@@ -56,26 +56,34 @@ pipeline{
                  }
              }
          }
-        //  stage("TRIVY"){
-        //      steps{
-        //          sh "trivy image tanaytibrewal/cicd:latest > trivyimage.txt" 
-        //      }
-        //  }
-        //   stage('Deploy to Kubernets'){
-        //      steps{
-        //          script{
-        //              dir('Kubernetes') {
-        //                  kubeconfig(credentialsId: 'kubernetes', serverUrl: '') {
-        //                  sh 'kubectl delete --all pods'
-        //                  sh 'kubectl apply -f deployment.yml'
-        //                  sh 'kubectl apply -f service.yml'
-        //                  }   
-        //              }   
-        //          }
-        //      }
-        //  }
-
-
-
+        stage("Deploy Container"){
+            steps{
+                script{
+                    sh '''
+                        # Check if container is running and stop/remove it
+                        if [ $(docker ps -q -f name=cicd-app) ]; then
+                            echo "Stopping running container..."
+                            docker stop cicd-app
+                        fi
+                        
+                        # Remove container if it exists (running or stopped)
+                        if [ $(docker ps -aq -f name=cicd-app) ]; then
+                            echo "Removing existing container..."
+                            docker rm cicd-app
+                        fi
+                        
+                        # Pull the latest image
+                        echo "Pulling latest image..."
+                        docker pull tanaytibrewal/cicd:latest
+                        
+                        # Run new container
+                        echo "Starting new container..."
+                        docker run -d --name cicd-app -p 3000:3000 tanaytibrewal/cicd:latest
+                        
+                        echo "Container deployed successfully!"
+                    '''
+                }
+            }
+        }
      }
- }
+}
